@@ -8,7 +8,12 @@ import InquiryDialog from "./inquiry-dialog";
 function Navigation() {
   return (
     <nav className="flex justify-between items-center px-12 py-6 border-b-[1px] border-neutral-200">
-      <Image src="/logo.png" height={53} width={150} alt="Bakhla Tours Logo" />
+      <Image
+        src="/logo-full.png"
+        height={53}
+        width={150}
+        alt="Bakhla Tours Logo"
+      />
       <Dialog>
         <DialogTrigger suppressHydrationWarning>
           <Button className="bg-bakhla-red hover:bg-bakhla-red/90">
