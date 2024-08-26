@@ -31,3 +31,10 @@ export type Package = {
   startHijri: string;
   endHijri: string;
 };
+
+type Amenity = {
+  title: string;
+  icon: string;
+  description: string;
+  type: "inclusion" | "exclusion";
+};

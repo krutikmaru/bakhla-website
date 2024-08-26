@@ -11,7 +11,6 @@ type MediaProps = {
 function Media({ media }: MediaProps) {
   const [current, setCurrent] = useState<MediaType>(media[0]);
 
-  // Function to extract YouTube video ID
   const getYoutubeId = (url: string) => {
     const match = url.match(
       /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/
@@ -20,15 +19,15 @@ function Media({ media }: MediaProps) {
   };
 
   return (
-    <div className="mt-10 flex space-x-5 items-stretch">
+    <div className="mt-10 flex flex-col md:flex-row space-x-0 space-y-5 md:space-x-5 md:space-y-0 items-stretch">
       {/* Carousel */}
-      <div className="flex flex-col space-y-2">
+      <div className="flex flex-row md:flex-col space-y-0 space-x-4 md:space-y-2 md:space-x-0 overflow-x-scroll md:overflow-x-visible p-2">
         {media.map((m) => (
           <div
             key={m.src}
             onClick={() => setCurrent(m)}
             className={clsx(
-              "w-32 h-32 rounded-md cursor-pointer relative overflow-hidden",
+              "min-w-[128px] max-w-[128px] h-32 rounded-md cursor-pointer relative overflow-hidden",
               m.src === current.src && "outline outline-4 outline-bakhla-red"
             )}
           >
@@ -50,7 +49,7 @@ function Media({ media }: MediaProps) {
           </div>
         ))}
       </div>
-      <div className="w-full rounded-md relative overflow-hidden">
+      <div className="w-full h-[500px] md:h-auto rounded-md relative overflow-hidden">
         {current.type === "image" ? (
           <Image
             src={current.src}

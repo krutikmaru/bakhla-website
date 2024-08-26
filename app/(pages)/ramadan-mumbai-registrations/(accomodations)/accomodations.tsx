@@ -6,7 +6,7 @@ import MadinahTab from "./madinah-tab";
 
 function Accommodations() {
   return (
-    <div className="px-24 py-12">
+    <div className="px-6 md:px-24 py-12">
       <h4 className="scroll-m-20 text-xl font-semibold tracking-tight text-bakhla-red">
         Your Comfort, Our Priority
       </h4>

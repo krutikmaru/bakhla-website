@@ -1,10 +1,13 @@
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PackageSelection from "./package-selection";
+import { Button } from "@/components/ui/button";
+import { Book, BookCheck } from "lucide-react";
+import ActionButtons from "./action-buttons";
 
 function Packages() {
   return (
-    <div className="px-24 py-6">
+    <div className="px-6 md:px-24 py-6">
       <h4 className="scroll-m-20 text-xl font-semibold tracking-tight text-bakhla-red">
         Bakhla Tours & Travels Pvt. Ltd.
       </h4>
@@ -20,6 +23,7 @@ function Packages() {
         </TabsList>
         <PackageSelection duration="15D" />
       </Tabs>
+      <ActionButtons />
     </div>
   );
 }

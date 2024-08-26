@@ -116,7 +116,7 @@ export const packages: Package[] = [
     endHijri: "01st Shawwal",
   },
   {
-    id: "RT17",
+    id: "RT21",
     title: {
       date: "25th Mar 2024",
       duration: "Last 15 Days",
