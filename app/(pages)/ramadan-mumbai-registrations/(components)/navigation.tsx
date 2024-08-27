@@ -7,18 +7,18 @@ import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import InquiryDialog from "./inquiry-dialog";
 function Navigation() {
   return (
-    <nav className="flex justify-between items-center px-12 py-6 border-b-[1px] border-neutral-200">
+    <nav className="flex fixed top-0 z-10 w-full bg-white justify-between items-center px-12 py-6 border-b-[1px] border-neutral-200">
       <Image
         src="/logo-full.png"
         height={53}
-        width={150}
+        width={120}
         alt="Bakhla Tours Logo"
       />
       <Dialog>
         <DialogTrigger suppressHydrationWarning>
           <Button className="bg-bakhla-red hover:bg-bakhla-red/90">
-            <Phone className="w-4 h-4 mr-2" />
-            Contact Us
+            <Phone className="w-4 h-4 mr-0 sm:mr-2" />
+            <span className="hidden sm:flex">Contact Us</span>
           </Button>
         </DialogTrigger>
         <InquiryDialog />

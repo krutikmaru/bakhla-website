@@ -3,7 +3,7 @@ import React from "react";
 
 function Banner() {
   return (
-    <div className="h-[300px] sm:h-[500px] w-full relative">
+    <div className="h-[300px] sm:h-[500px] w-full mt-20 relative">
       <Image
         src="/images/banners/ramadan-banner.webp"
         alt="Ramadan Banner"

@@ -16,7 +16,7 @@ function InquiryDialog() {
     <DialogContent>
       <DialogHeader>
         <Image
-          src="/logo.png"
+          src="/logo-full.png"
           height={53}
           width={150}
           alt="Bakhla Tours Logo"

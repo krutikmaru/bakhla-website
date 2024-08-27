@@ -56,13 +56,13 @@ function PackageSelection({ duration = "15D" }: PackageSelectionProps) {
           <h2 className="scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0">
             {current.category}
           </h2>
-          <h4 className="scroll-m-20 text-xl font-semibold tracking-tight text-bakhla-red">
+          <h4 className="scroll-m-20 text-lg font-semibold tracking-tight text-bakhla-red">
             {current.summary}
           </h4>
           <div className="flex flex-col justify-start items-start mt-10 w-full">
             {/* Room Sizes */}
             <div className="flex flex-col items-center space-x-0 space-y-5 w-full sm:flex-row sm:space-x-2 sm:space-y-0">
-              <div className="w-full md:w-[150px] flex flex-col space-y-1 items-center sm:items-start justify-start text-bakhla-red font-semibold">
+              <div className="w-full text-lg sm:text-base md:w-[150px] flex flex-row sm:flex-col space-y-1 items-center sm:items-start justify-between sm:justify-start text-bakhla-red font-semibold">
                 <span>Quad</span>
                 <Button
                   onClick={() => setOpen(true)}
@@ -72,7 +72,7 @@ function PackageSelection({ duration = "15D" }: PackageSelectionProps) {
                   View
                 </Button>
               </div>
-              <div className="w-full md:w-[150px] flex flex-col space-y-1 items-center sm:items-start justify-start text-bakhla-red font-semibold">
+              <div className="w-full text-lg sm:text-base md:w-[150px] flex flex-row sm:flex-col space-y-1 items-center sm:items-start justify-between sm:justify-start text-bakhla-red font-semibold">
                 <span>Triple</span>
                 <Button
                   onClick={() => setOpen(true)}
@@ -82,7 +82,7 @@ function PackageSelection({ duration = "15D" }: PackageSelectionProps) {
                   View
                 </Button>
               </div>
-              <div className="w-full md:w-[150px] flex flex-col space-y-1 items-center sm:items-start justify-start text-bakhla-red font-semibold">
+              <div className="w-full text-lg sm:text-base md:w-[150px] flex flex-row sm:flex-col space-y-1 items-center sm:items-start justify-between sm:justify-start text-bakhla-red font-semibold">
                 <span>Double</span>
                 <Button
                   onClick={() => setOpen(true)}
@@ -92,7 +92,7 @@ function PackageSelection({ duration = "15D" }: PackageSelectionProps) {
                   View
                 </Button>
               </div>
-              <div className="w-full md:w-[150px] flex flex-col space-y-1 items-center sm:items-start justify-start text-bakhla-red font-semibold">
+              <div className="w-full text-lg sm:text-base md:w-[150px] flex flex-row sm:flex-col space-y-1 items-center sm:items-start justify-between sm:justify-start text-bakhla-red font-semibold">
                 <span>Air Ticket</span>
                 <Button
                   onClick={() => setOpen(true)}
@@ -104,51 +104,51 @@ function PackageSelection({ duration = "15D" }: PackageSelectionProps) {
               </div>
             </div>
             {/* Hotels & Food */}
-            <div className="flex flex-col space-x-0 space-y-5 justify-start mt-7 w-full sm:flex-row sm:space-x-2 sm:space-y-0">
-              <div className="w-full md:w-[150px] items-center sm:items-start justify-start flex flex-col space-y-1  text-bakhla-red font-semibold">
+            <div className="flex flex-col space-x-0 border-t-2 border-b-2 py-10 border-bakhla-red space-y-5 justify-start mt-7 w-full lg:w-fit sm:flex-row sm:space-x-2 sm:space-y-0">
+              <div className="w-full text-lg sm:text-base md:w-[150px] flex flex-row sm:flex-col space-y-1 items-center sm:items-start justify-between sm:justify-start text-bakhla-red font-semibold">
                 <span>Hotel Makkah</span>
                 <span className="text-sm text-neutral-500">
                   {current.hotelMakkah}
                 </span>
               </div>
-              <div className="w-full md:w-[150px] items-center sm:items-start justify-start flex flex-col space-y-1  text-bakhla-red font-semibold">
+              <div className="w-full text-lg sm:text-base md:w-[150px] flex flex-row sm:flex-col space-y-1 items-center sm:items-start justify-between sm:justify-start text-bakhla-red font-semibold">
                 <span>Hotel Madinah</span>
                 <span className="text-sm text-neutral-500">
                   {current.hotelMadinah}
                 </span>
               </div>
-              <div className="w-full md:w-[150px] items-center sm:items-start justify-start flex flex-col space-y-1  text-bakhla-red font-semibold">
+              <div className="w-full text-lg sm:text-base md:w-[150px] flex flex-row sm:flex-col space-y-1 items-center sm:items-start justify-between sm:justify-start text-bakhla-red font-semibold">
                 <span>Food Menu</span>
                 <span className="text-sm text-neutral-500">
                   {current.foodMenu}
                 </span>
               </div>
-              <div className="w-full md:w-[150px] items-center sm:items-start justify-start flex flex-col space-y-1  text-bakhla-red font-semibold">
+              <div className="w-full text-lg sm:text-base md:w-[150px] flex flex-row sm:flex-col space-y-1 items-center sm:items-start justify-between sm:justify-start text-bakhla-red font-semibold">
                 <span>Eid</span>
                 <span className="text-sm text-neutral-500">{current.Eid}</span>
               </div>
             </div>
             {/* Dates */}
-            <div className="flex flex-col space-x-0 space-y-5 justify-start mt-7 border-t-2 border-bakhla-red pt-5 w-full sm:flex-row sm:space-x-2 sm:space-y-0">
-              <div className="w-full md:w-[150px] items-center sm:items-start justify-start flex flex-col space-y-1  text-bakhla-red font-semibold">
+            <div className="flex flex-col space-x-0 space-y-5 justify-start mt-7  pt-5 w-full sm:flex-row sm:space-x-2 sm:space-y-0">
+              <div className="w-full text-lg sm:text-base md:w-[150px] flex flex-row sm:flex-col space-y-1 items-center sm:items-start justify-between sm:justify-start text-bakhla-red font-semibold">
                 <span>Start Date</span>
                 <span className="text-sm text-neutral-500">
                   {current.startDate}
                 </span>
               </div>
-              <div className="w-full md:w-[150px] items-center sm:items-start justify-start flex flex-col space-y-1  text-bakhla-red font-semibold">
+              <div className="w-full text-lg sm:text-base md:w-[150px] flex flex-row sm:flex-col space-y-1 items-center sm:items-start justify-between sm:justify-start text-bakhla-red font-semibold">
                 <span>Start Hijri</span>
                 <span className="text-sm text-neutral-500">
                   {current.startHijri}
                 </span>
               </div>
-              <div className="w-full md:w-[150px] items-center sm:items-start justify-start flex flex-col space-y-1  text-bakhla-red font-semibold">
+              <div className="w-full text-lg sm:text-base md:w-[150px] flex flex-row sm:flex-col space-y-1 items-center sm:items-start justify-between sm:justify-start text-bakhla-red font-semibold">
                 <span>End Date</span>
                 <span className="text-sm text-neutral-500">
                   {current.endDate}
                 </span>
               </div>
-              <div className="w-full md:w-[150px] items-center sm:items-start justify-start flex flex-col space-y-1  text-bakhla-red font-semibold">
+              <div className="w-full text-lg sm:text-base md:w-[150px] flex flex-row sm:flex-col space-y-1 items-center sm:items-start justify-between sm:justify-start text-bakhla-red font-semibold">
                 <span>End Hijri</span>
                 <span className="text-sm text-neutral-500">
                   {current.endHijri}
