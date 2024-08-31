@@ -1,6 +1,7 @@
 import Link from "next/link";
 import InfiniteCarousel from "./(components)/carousel";
 import Media from "./media";
+import Blogs from "./blogs";
 
 export default function Home() {
   return (
@@ -42,6 +43,7 @@ export default function Home() {
         </Link>
       </div>
       <Media />
+      <Blogs />
     </div>
   );
 }
