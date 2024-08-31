@@ -21,6 +21,7 @@ const config = {
     extend: {
       backgroundImage: {
         packages: "url('/images/backgrounds/packages.png')",
+        landing: "url('/images/banners/landing.webp')",
       },
       colors: {
         bakhla: {
