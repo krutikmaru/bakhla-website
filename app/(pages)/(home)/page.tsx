@@ -1,5 +1,6 @@
 import Link from "next/link";
 import InfiniteCarousel from "./(components)/carousel";
+import Media from "./media";
 
 export default function Home() {
   return (
@@ -40,6 +41,7 @@ export default function Home() {
           View All
         </Link>
       </div>
+      <Media />
     </div>
   );
 }
