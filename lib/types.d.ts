@@ -13,19 +13,25 @@ export type Media = {
 };
 
 export type Package = {
+  name: string;
+  displayTitle: string;
+  image: string;
   id: string;
+  priceFormatted: string;
   title: {
     date: string;
     duration: string;
     type: string;
   };
   category: string;
+  mouallim: string;
+  departure: string;
   summary: string;
   duration: string;
   hotelMakkah: string;
   hotelMadinah: string;
   foodMenu: string;
-  Eid: string;
+  eid: string;
   startDate: string;
   endDate: string;
   startHijri: string;

@@ -5,8 +5,8 @@ import Blogs from "./blogs";
 
 export default function Home() {
   return (
-    <div className="w-screen overflow-hidden">
-      <div className="w-screen h-screen bg-landing bg-cover bg-bottom flex flex-col justify-end items-center overflow-hidden pb-20">
+    <div className="overflow-x-hidden">
+      <div className="h-screen bg-landing bg-cover bg-bottom flex flex-col justify-end items-center overflow-hidden pb-20">
         <h1 className="scroll-m-20 text-4xl font-extrabold lg:text-5xl text-bakhla-red uppercase">
           Better Pilgrimage
         </h1>

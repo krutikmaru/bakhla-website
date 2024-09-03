@@ -125,7 +125,7 @@ function PackageSelection({ duration = "15D" }: PackageSelectionProps) {
               </div>
               <div className="w-full text-lg sm:text-base md:w-[150px] flex flex-row sm:flex-col space-y-1 items-center sm:items-start justify-between sm:justify-start text-bakhla-red font-semibold">
                 <span>Eid</span>
-                <span className="text-sm text-neutral-500">{current.Eid}</span>
+                <span className="text-sm text-neutral-500">{current.eid}</span>
               </div>
             </div>
             {/* Dates */}

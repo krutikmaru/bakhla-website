@@ -70,5 +70,5 @@
 
 body,
 html {
-  @apply overflow-x-hidden;
+  @apply overflow-y-visible;
 }

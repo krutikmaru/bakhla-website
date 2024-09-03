@@ -13,6 +13,11 @@ function Navigation() {
           alt="Bakhla Tours Logo"
         />
       </Link>
+      <div className="flex items-center space-x-4">
+        <Link href={"/packages/hajj"}>Hajj</Link>
+        <Link href={"/packages/umrah"}>Umrah</Link>
+        <Link href={"/packages/ramadan"}>Ramadan</Link>
+      </div>
     </nav>
   );
 }
