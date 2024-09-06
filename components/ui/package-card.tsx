@@ -10,7 +10,7 @@ function PackageCardFace({
   tourPackage,
   className,
 }: {
-  tourPackage: Package;
+  tourPackage: any;
   className?: string;
 }) {
   return (
@@ -22,7 +22,7 @@ function PackageCardFace({
     >
       <div className="w-full h-[200px] relative overflow-hidden">
         <Image
-          src={tourPackage.image}
+          src={"/images/banners/landing.webp"}
           alt="Image"
           fill
           className="absolute object-cover scale-110 group-hover:scale-100 transition-transform ease-in-out duration-200"
@@ -30,38 +30,51 @@ function PackageCardFace({
       </div>
       <div className="pt-5 px-7 flex flex-col justify-start items-start">
         <h4 className="scroll-m-20 mb-4 text-xl font-semibold tracking-tight text-bakhla-red">
-          {tourPackage.displayTitle}
+          {tourPackage.Name}
         </h4>
         <div className="flex flex-col w-full justify-start items-start text-black text-sm space-y-1">
           <div className="w-full flex justify-between items-center ">
             <span className="font-semibold">Mouallim No.</span>
-            <span className="text-neutral-600">{tourPackage.mouallim}</span>
+            <span className="text-neutral-600">{tourPackage.Mouallim_No}</span>
           </div>
           <div className="w-full flex justify-between items-center">
             <span className="font-semibold">Makkah Hotel</span>
-            <span className="text-neutral-600">{tourPackage.hotelMakkah}</span>
+            <span className="text-neutral-600">
+              {tourPackage.HOTEL_MAKKAH.name}
+            </span>
           </div>
           <div className="w-full flex justify-between items-center">
             <span className="font-semibold">Madinah Hotel</span>
-            <span className="text-neutral-600">{tourPackage.hotelMadinah}</span>
+            <span className="text-neutral-600">
+              {tourPackage.Hotel_in_Madinah.name}
+            </span>
           </div>
           <div className="w-full flex justify-between items-center">
             <span className="font-semibold">Flight Departure</span>
-            <span className="text-neutral-600">{tourPackage.departure}</span>
+            <span className="text-neutral-600">
+              {tourPackage.Flight_Departure}
+            </span>
           </div>
         </div>
         <div className="my-4 text-sm text-black font-semibold">
-          From{" "}
-          <span className="text-bakhla-red">{tourPackage.priceFormatted}</span>{" "}
-          Per Person
+          From <span className="text-bakhla-red">{tourPackage.Quint}</span> Per
+          Person
         </div>
         <div className="text-sm text-neutral-600 font-semibold flex items-center">
           <Clock className="mr-2 w-4 h-4" />
-          13 Days
+          {tourPackage.Duration_in_Days} Days
         </div>
         <div className="py-3 mt-5 border-t-[1px] border-neutral-300 w-full flex justify-between items-center">
           <Link
-            href={`/packages/${tourPackage.name}/${tourPackage.id}`}
+            href={{
+              pathname: `/packages/${tourPackage.Pakage_Parent_Group.toLowerCase()}/${
+                tourPackage.Package_ID
+              }`,
+              query: tourPackage,
+            }}
+            // href={`/packages/${tourPackage.Pakage_Parent_Group.toLowerCase()}/${
+            //   tourPackage.Package_ID
+            // }`}
             className="text-bakhla-red"
           >
             Read More

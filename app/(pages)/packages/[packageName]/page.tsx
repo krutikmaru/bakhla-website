@@ -2,10 +2,23 @@ import PackageCardFace from "@/components/ui/package-card";
 import { packages as allPackages } from "@/lib/data/packages";
 import Image from "next/image";
 import React from "react";
+import axios from "axios";
 
-function page({ params }: { params: { packageName: string } }) {
+async function page({ params }: { params: { packageName: string } }) {
   const packageName = params["packageName"];
-  const packages = allPackages.filter((p) => p.name === packageName);
+  let data = null;
+  try {
+    const res: any = await axios.post(
+      "http://127.0.0.1:5000/data/all_packages"
+    );
+    data = res.data.data;
+    console.log("m21", data);
+    console.log(data);
+  } catch (e) {
+    console.log("error", e);
+  }
+
+  // return <h1>Meera 4ever</h1>;
 
   return (
     <div className="pt-32 px-6 sm:px-20 flex justify-center items-start flex-wrap">
@@ -13,7 +26,7 @@ function page({ params }: { params: { packageName: string } }) {
         <Image
           className="absolute object-cover"
           fill
-          src={packages[0].image}
+          src={"/images/banners/landing.webp"}
           alt="Banner"
         />
         <div className="w-full h-full absolute bg-gradient-to-b from-transparent to-black flex justify-center items-center ">
@@ -22,9 +35,14 @@ function page({ params }: { params: { packageName: string } }) {
           </h1>
         </div>
       </div>
-      {packages.map((p) => {
+      {data.map((p: any) => {
+        console.log("data", p);
         return (
-          <PackageCardFace className="mr-3 mb-5" key={p.id} tourPackage={p} />
+          <PackageCardFace
+            className="mr-3 mb-5"
+            key={p.Package_ID}
+            tourPackage={p}
+          />
         );
       })}
     </div>

@@ -79,11 +79,11 @@ export const packages: Package[] = [
   },
   {
     name: "ramadan",
-
     displayTitle: "RAMADAN UMRAH 2024 GOLD PACKAGE (SHABAN | RAMADAN - RT01)",
     priceFormatted: "₹1,58,00",
     image: "/images/packages/ramadan/1.webp",
     id: "RT04",
+
     title: {
       date: "25th Mar 2024",
       duration: "Last 15 Days",

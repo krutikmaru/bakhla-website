@@ -1,3 +1,6 @@
+"use client";
+import { useRouter } from "next/navigation";
+
 import Link from "next/link";
 import React from "react";
 import {
@@ -26,7 +29,9 @@ import {
 } from "@/components/ui/select";
 import Image from "next/image";
 
-function page({ params }: { params: { packageId: string } }) {
+function Page({ params }: { params: { packageId: string } }) {
+  const router = useRouter();
+
   return (
     <div className="mt-20 flex justify-start items-start flex-wrap overflow-visible">
       <div className="w-full h-[500px]  relative">
@@ -325,4 +330,4 @@ function page({ params }: { params: { packageId: string } }) {
   );
 }
 
-export default page;
+export default Page;
