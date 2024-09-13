@@ -13,7 +13,7 @@ function Blogs() {
         View All
       </Link>
       <div className="w-full mt-5 px-40 grid grid-cols-1 sm:grid-cols-2 place-items-center place-content-center gap-5">
-        {blogs.map((blog) => (
+        {blogs.slice(0, 4).map((blog) => (
           <BlogCard key={blog.url} blog={blog} />
         ))}
       </div>
