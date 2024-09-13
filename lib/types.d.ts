@@ -44,3 +44,18 @@ type Amenity = {
   description: string;
   type: "inclusion" | "exclusion";
 };
+
+export type Video = {
+  thumbnail: string;
+  title: string;
+  url: string;
+};
+
+export type Blog = {
+  title: string;
+  description: string;
+  image: string;
+  url: string;
+  author: string;
+  date: string;
+};

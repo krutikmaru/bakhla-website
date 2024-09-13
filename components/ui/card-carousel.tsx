@@ -21,7 +21,7 @@ const cards: Card[] = [
   { id: 6, content: "6" },
 ];
 
-export default function Component() {
+export default function CardCarousel() {
   const [currentIndex, setCurrentIndex] = useState(
     Math.floor(cards.length / 2)
   );
@@ -90,7 +90,7 @@ export default function Component() {
   };
 
   return (
-    <div className="relative w-full mx-auto overflow-hidden mt-44">
+    <div className="relative w-full mx-auto overflow-hidden mt-6">
       {/* Side strips */}
       <>
         <div className="absolute w-8 h-full left-0 bg-gradient-to-l from-transparent to-white z-10" />

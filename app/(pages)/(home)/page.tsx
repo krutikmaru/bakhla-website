@@ -1,7 +1,8 @@
 import Link from "next/link";
-import InfiniteCarousel from "./(components)/carousel";
 import Media from "./media";
 import Blogs from "./blogs";
+import CardCarousel from "@/components/ui/card-carousel";
+import LogoTicker from "./(components)/logo-ticker";
 
 export default function Home() {
   return (
@@ -19,7 +20,8 @@ export default function Home() {
         <h2 className="scroll-m-20 text-center text-3xl font-semibold tracking-tight first:mt-0 text-bakhla-red">
           Hajj Packages
         </h2>
-        <InfiniteCarousel />
+        <CardCarousel />
+
         <Link href={"#"} className="text-bakhla-red underline mt-5">
           View All
         </Link>
@@ -28,7 +30,7 @@ export default function Home() {
         <h2 className="scroll-m-20 text-center text-3xl font-semibold tracking-tight first:mt-0 text-bakhla-red">
           Umrah & Ziyarat Packages
         </h2>
-        <InfiniteCarousel />
+        <CardCarousel />
         <Link href={"#"} className="text-bakhla-red underline mt-5">
           View All
         </Link>
@@ -37,13 +39,14 @@ export default function Home() {
         <h2 className="scroll-m-20 text-center text-3xl font-semibold tracking-tight first:mt-0 text-bakhla-red">
           Ramadan Umrah Packages
         </h2>
-        <InfiniteCarousel />
+        <CardCarousel />
         <Link href={"#"} className="text-bakhla-red underline mt-5">
           View All
         </Link>
       </div>
       <Media />
       <Blogs />
+      <LogoTicker />
     </div>
   );
 }
