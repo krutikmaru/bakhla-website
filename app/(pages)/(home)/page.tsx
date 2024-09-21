@@ -7,7 +7,7 @@ import LogoTicker from "./(components)/logo-ticker";
 export default function Home() {
   return (
     <div className="overflow-x-hidden">
-      <div className="h-screen bg-landing bg-cover bg-bottom flex flex-col justify-end items-center overflow-hidden pb-20">
+      <div className="h-screen bg-landing bg-cover bg-bottom flex flex-col justify-end items-center overflow-hidden text-center pb-20 px-6 md:px-0 space-y-3 md:space-y-0">
         <h1 className="scroll-m-20 text-4xl font-extrabold lg:text-5xl text-bakhla-red uppercase">
           Better Pilgrimage
         </h1>

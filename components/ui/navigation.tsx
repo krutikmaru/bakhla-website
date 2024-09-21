@@ -1,8 +1,30 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Menu } from "lucide-react";
 
+const navigation = [];
 function Navigation() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <nav className="flex fixed top-0 z-50 w-full bg-white justify-between items-center px-12 py-6 border-b-[1px] border-neutral-200">
       <Link href="/">
@@ -13,13 +35,37 @@ function Navigation() {
           alt="Bakhla Tours Logo"
         />
       </Link>
-      <div className="flex items-center space-x-4">
-        <Link href={"/packages/hajj"}>Hajj</Link>
-        <Link href={"/packages/umrah"}>Umrah</Link>
-        <Link href={"/packages/ramadan"}>Ramadan</Link>
-      </div>
+      {isMobile ? <MobileNavigation /> : <DesktopNavigation />}
     </nav>
   );
 }
 
 export default Navigation;
+
+function DesktopNavigation() {
+  return (
+    <div className="flex items-center space-x-4">
+      <Link href={"/packages/hajj"}>Hajj</Link>
+      <Link href={"/packages/umrah"}>Umrah</Link>
+      <Link href={"/packages/ramadan"}>Ramadan</Link>
+    </div>
+  );
+}
+
+function MobileNavigation() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        <Menu />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="mr-10">
+        <DropdownMenuLabel>Tours</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>Hajj</DropdownMenuItem>
+        <DropdownMenuItem>Umrah</DropdownMenuItem>
+        <DropdownMenuItem>Ramadan</DropdownMenuItem>
+        <DropdownMenuItem>Subscription</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
