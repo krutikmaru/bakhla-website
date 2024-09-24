@@ -1,15 +1,19 @@
+const BASE_URL = "https://v4vll52b-5000.inc1.devtunnels.ms";
 const mappings = {
   ramadan: {
-    "*": "http://bakhla.devdusija.com/data/get_all_ramzan_packages",
-    static: "http://bakhla.devdusija.com/data/ramzan_umrah_description",
+    "*": `${BASE_URL}/data/get_all_ramzan_packages`,
+    static: `${BASE_URL}/data/ramzan_umrah_description`,
+    single: `${BASE_URL}/data/get_single_ramzan_package`,
   },
   hajj: {
-    "*": "http://127.0.0.1:5000/data/get_all_ramzan_packages",
-    static: "http://127.0.0.1:5000/data/ramzan_umrah_description",
+    "*": `${BASE_URL}/data/get_all_hajj_packages`,
+    static: `${BASE_URL}/data/hajj_settings`,
+    single: `${BASE_URL}/data/get_single_hajj_package`,
   },
   umrah: {
-    "*": "http://127.0.0.1:5000/data/get_all_ramzan_packages",
-    static: "http://127.0.0.1:5000/data/ramzan_umrah_description",
+    "*": `${BASE_URL}/data/get_all_ramzan_packages`,
+    static: `${BASE_URL}/data/ramzan_umrah_description`,
+    single: `${BASE_URL}/data/get_single_ramzan_package`,
   },
 };
 
