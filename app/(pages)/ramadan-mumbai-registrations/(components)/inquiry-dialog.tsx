@@ -32,7 +32,7 @@ function InquiryDialog() {
           <Label htmlFor="name" className="text-right text-xs text-neutral-500">
             Name
           </Label>
-          <Input id="name" placeholder="Meera Maru" />
+          <Input id="name" placeholder="Afreen Shaikh" />
         </div>
         <div>
           <Label
@@ -41,7 +41,7 @@ function InquiryDialog() {
           >
             Email
           </Label>
-          <Input id="email" type="email" placeholder="meera@gmail.com" />
+          <Input id="email" type="email" placeholder="afreen@gmail.com" />
         </div>
         <div>
           <Label

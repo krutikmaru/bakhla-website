@@ -16,7 +16,7 @@ function Page() {
   }, []);
   return (
     <div className="w-screen h-screen flex justify-center items-center">
-      <Image src={imageUrl} alt="meera" width={400} height={300} />
+      <Image src={imageUrl} alt="alternate" width={400} height={300} />
       Page
     </div>
   );

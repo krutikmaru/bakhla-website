@@ -38,22 +38,40 @@ export default function Footer() {
               Follow us
             </h4>
             <div className="flex space-x-3">
-              <Link href="#" className="bg-neutral-700 rounded-full p-2">
+              <Link
+                href="https://api.whatsapp.com/send/?phone=%2B919920820751&text&app_absent=0"
+                className="bg-neutral-700 rounded-full p-2"
+              >
                 <Facebook size={20} />
               </Link>
-              <Link href="#" className="bg-neutral-700 rounded-full p-2">
+              <Link
+                href="https://www.facebook.com/bakhlatours/"
+                className="bg-neutral-700 rounded-full p-2"
+              >
                 <Facebook size={20} />
               </Link>
-              <Link href="#" className="bg-neutral-700 rounded-full p-2">
+              <Link
+                href="https://www.instagram.com/bakhla.tours/"
+                className="bg-neutral-700 rounded-full p-2"
+              >
                 <Instagram size={20} />
               </Link>
-              <Link href="#" className="bg-neutral-700 rounded-full p-2">
+              <Link
+                href="https://twitter.com/BakhlaTravels"
+                className="bg-neutral-700 rounded-full p-2"
+              >
                 <Twitter size={20} />
               </Link>
-              <Link href="#" className="bg-neutral-700 rounded-full p-2">
+              <Link
+                href="https://www.youtube.com/@bakhlatours"
+                className="bg-neutral-700 rounded-full p-2"
+              >
                 <Youtube size={20} />
               </Link>
-              <Link href="#" className="bg-neutral-700 rounded-full p-2">
+              <Link
+                href="https://www.linkedin.com/company/bakhlatours/"
+                className="bg-neutral-700 rounded-full p-2"
+              >
                 <Linkedin size={20} />
               </Link>
               {/* <Link href="#" className="bg-red-600 p-2 rounded-full"><Pinterest size={20} /></Link> */}
@@ -68,7 +86,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="#"
+                  href="/packages/hajj"
                   className="leading-7 [&:not(:first-child)]:my-2 text-neutral-400 hover:text-bakhla-red transition-all duration-300 ease-in-out"
                 >
                   Hajj
@@ -76,7 +94,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/packages/ramadan"
                   className="leading-7 [&:not(:first-child)]:my-2 text-neutral-400 hover:text-bakhla-red transition-all duration-300 ease-in-out"
                 >
                   Ramadan Umrah
@@ -84,7 +102,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/packages/umrah"
                   className="leading-7 [&:not(:first-child)]:my-2 text-neutral-400 hover:text-bakhla-red transition-all duration-300 ease-in-out"
                 >
                   Umrah
@@ -92,7 +110,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/packages/ziyarat"
                   className="leading-7 [&:not(:first-child)]:my-2 text-neutral-400 hover:text-bakhla-red transition-all duration-300 ease-in-out"
                 >
                   Ziyarat
@@ -109,7 +127,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="#"
+                  href="/"
                   className="leading-7 [&:not(:first-child)]:my-2 text-neutral-400 hover:text-bakhla-red transition-all duration-300 ease-in-out"
                 >
                   Home
@@ -141,7 +159,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/blogs"
                   className="leading-7 [&:not(:first-child)]:my-2 text-neutral-400 hover:text-bakhla-red transition-all duration-300 ease-in-out"
                 >
                   Our Blog
@@ -165,7 +183,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/media"
                   className="leading-7 [&:not(:first-child)]:my-2 text-neutral-400 hover:text-bakhla-red transition-all duration-300 ease-in-out"
                 >
                   Media

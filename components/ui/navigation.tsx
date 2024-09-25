@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Menu } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const navigation = [];
 function Navigation() {
@@ -53,6 +54,7 @@ function DesktopNavigation() {
 }
 
 function MobileNavigation() {
+  const router = useRouter();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -61,10 +63,15 @@ function MobileNavigation() {
       <DropdownMenuContent className="mr-10">
         <DropdownMenuLabel>Tours</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Hajj</DropdownMenuItem>
-        <DropdownMenuItem>Umrah</DropdownMenuItem>
-        <DropdownMenuItem>Ramadan</DropdownMenuItem>
-        <DropdownMenuItem>Subscription</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => router.push("/packages/hajj")}>
+          Hajj
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => router.push("/packages/umrah")}>
+          Umrah
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => router.push("/packages/ramadan")}>
+          Ramadan
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
