@@ -9,17 +9,30 @@ import {
 
 const filters = {
   ramadan: [
+    // {
+    //   type: "select",
+    //   title: "No of days",
+    //   fieldname: "NO_OF_DAYS",
+    //   options: ["15", "20", "30"],
+    // },
     {
-      type: "select",
+      type: "range",
       title: "No of days",
       fieldname: "NO_OF_DAYS",
-      options: ["15", "20", "30"],
+      options: [
+        { from: 5, to: 15 },
+        { from: 15, to: 20 },
+        { from: 20, to: 30 },
+        { from: 30, to: "*" },
+      ],
     },
     {
       type: "range",
       title: "Price range",
       fieldname: "QUIT_I_QUAD",
       options: [
+        "Low to high",
+        "High to low",
         { from: 100000, to: 150000 },
         { from: 150000, to: 200000 },
         { from: 200000, to: 250000 },
@@ -42,6 +55,8 @@ const filters = {
       title: "Price range",
       fieldname: "FOUR_BED_SHARING",
       options: [
+        "Low to high",
+        "High to low",
         { from: 100000, to: 150000 },
         { from: 150000, to: 200000 },
         { from: 200000, to: 250000 },
@@ -73,7 +88,7 @@ type Range = {
   type: string;
   title: string;
   fieldname: string;
-  options: RangeOption[];
+  options: RangeOption[] | string[];
 };
 
 export function renderFilters(
@@ -153,9 +168,30 @@ function renderSelect(filter: Select, filters: any, setFilters: any) {
 
 function renderRangeSelect(filter: Range, setFilters: any) {
   function handleRangeSelectValueChange(value: string) {
+    const stringOptions = ["Low to high", "High to low"];
     if (value === "*") {
       setFilters((prevFilters: any) => {
         return prevFilters.filter((f: any) => f.fieldname !== filter.fieldname);
+      });
+    } else if (stringOptions.includes(value)) {
+      setFilters((prevFilters: any) => {
+        let notFound = true;
+        const newFilters = prevFilters.map((f: any) => {
+          if (f.fieldname === filter.fieldname) {
+            notFound = false;
+            return { ...f, value: value };
+          }
+          return f;
+        });
+
+        if (notFound) {
+          newFilters.push({
+            fieldname: filter.fieldname,
+            type: "range",
+            value: value,
+          });
+        }
+        return newFilters;
       });
     } else {
       setFilters((prevFilters: any) => {
@@ -190,13 +226,22 @@ function renderRangeSelect(filter: Range, setFilters: any) {
         </SelectTrigger>
         <SelectContent>
           <SelectItem value={"*"}>None</SelectItem>
-          {filter.options?.map((option) => (
-            <SelectItem key={option.from} value={JSON.stringify(option)}>
-              {option.to === "*"
-                ? `${option.from} > `
-                : `${option.from} to ${option.to}`}
-            </SelectItem>
-          ))}
+          {filter.options?.map((option) => {
+            if (typeof option === "string") {
+              return (
+                <SelectItem key={option} value={option}>
+                  {option}
+                </SelectItem>
+              );
+            }
+            return (
+              <SelectItem key={option.from} value={JSON.stringify(option)}>
+                {option.to === "*"
+                  ? `${option.from} > `
+                  : `${option.from} to ${option.to}`}
+              </SelectItem>
+            );
+          })}
         </SelectContent>
       </Select>
     </div>

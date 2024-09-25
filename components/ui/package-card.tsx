@@ -21,11 +21,7 @@ function PackageCardFace({
   // CARDFACE_DISPLAY_FIELDS
   const CARDFACE_DISPLAY_FIELDS =
     settings["CARDFACE_DISPLAY_FIELDS"]["fields"] || [];
-  console.log(
-    settings["PRICE_FIELD_NAME"],
-    data[settings["PRICE_FIELD_NAME"]],
-    formatCurrency(data[settings["PRICE_FIELD_NAME"]])
-  );
+
   const price = formatCurrency(data[settings["PRICE_FIELD_NAME"]]) || "NA";
   const packageId = data["PACKAGE_ID"];
 

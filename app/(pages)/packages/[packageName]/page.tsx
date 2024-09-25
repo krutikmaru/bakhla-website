@@ -89,19 +89,30 @@ export default Page;
 
 function getFilteredData(data: any, filters: any) {
   let dataCopy = JSON.parse(JSON.stringify(data));
+  console.log(filters);
   filters.map((f: any) => {
     if (f.type === "equals") {
       dataCopy = dataCopy.filter((dc: any) => dc[f.fieldname] === f.value);
     }
     if (f.type === "range") {
-      const range = f.value;
-      dataCopy = dataCopy.filter((dc: any) => {
-        if (range.to === "*") {
-          return dc[f.fieldname] >= range.from;
-        } else {
-          return dc[f.fieldname] >= range.from && dc[f.fieldname] < range.to;
-        }
-      });
+      if (typeof f.value === "string") {
+        dataCopy = dataCopy.sort(function (a: any, b: any) {
+          if (f.value === "Low to high") {
+            return a[f.fieldname] - b[f.fieldname];
+          } else if (f.value === "High to low") {
+            return b[f.fieldname] - a[f.fieldname];
+          }
+        });
+      } else {
+        const range = f.value;
+        dataCopy = dataCopy.filter((dc: any) => {
+          if (range.to === "*") {
+            return dc[f.fieldname] >= range.from;
+          } else {
+            return dc[f.fieldname] >= range.from && dc[f.fieldname] < range.to;
+          }
+        });
+      }
     }
   });
   return dataCopy;

@@ -1,4 +1,4 @@
-const BASE_URL = "https://v4vll52b-5000.inc1.devtunnels.ms";
+const BASE_URL = "https://krutik.devdusija.com";
 const mappings = {
   ramadan: {
     "*": `${BASE_URL}/data/get_all_ramzan_packages`,
