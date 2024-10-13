@@ -47,8 +47,8 @@ function DesktopNavigation() {
   return (
     <div className="flex items-center space-x-4">
       <Link href={"/packages/hajj"}>Hajj</Link>
-      <Link href={"/packages/umrah"}>Umrah</Link>
-      <Link href={"/packages/ramadan"}>Ramadan</Link>
+      <Link href={"#"}>Umrah</Link>
+      <Link href={"/packages/ramadan-umrah"}>Ramadan</Link>
     </div>
   );
 }

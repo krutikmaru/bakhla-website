@@ -6,6 +6,8 @@ import { ChevronLeft, ChevronRight, Clock } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { Dialog } from "./dialog";
+import InquiryDialog from "./inquiry-dialog";
 
 interface Card {
   id: number;
@@ -21,7 +23,7 @@ const cards: Card[] = [
   { id: 6, content: "6" },
 ];
 
-export default function CardCarousel() {
+export default function CardCarousel({ showPrices }: { showPrices: boolean }) {
   const [currentIndex, setCurrentIndex] = useState(
     Math.floor(cards.length / 2)
   );
@@ -116,32 +118,48 @@ export default function CardCarousel() {
               onDrag={handleDrag}
               onDragEnd={handleDragEnd}
             >
-              <Card />
+              <Card showPrices={showPrices} />
             </motion.div>
           ))}
         </AnimatePresence>
       </div>
       <button
         onClick={moveLeft}
-        className="absolute z-20 left-4 top-1/2 transform -translate-y-1/2 text-neutral-700 bg-white/50 backdrop-blur-lg rounded-full p-2"
+        className="absolute z-20 left-12 top-1/2 transform -translate-y-1/2 text-neutral-700 bg-white/50 backdrop-blur-lg rounded-full p-2"
         aria-label="Previous card"
         disabled={currentIndex === 0}
       >
-        <ChevronLeft className="w-6 h-6" />
+        <ChevronLeft
+          style={{ visibility: currentIndex === 0 ? "hidden" : "visible" }}
+          className="w-6 h-6"
+        />
       </button>
       <button
         onClick={moveRight}
-        className="absolute z-20 right-4 top-1/2 transform -translate-y-1/2 text-neutral-700 bg-white/50 backdrop-blur-lg rounded-full p-2"
+        className="absolute z-20 right-12 top-1/2 transform -translate-y-1/2 text-neutral-700 bg-white/50 backdrop-blur-lg rounded-full p-2"
         aria-label="Next card"
         disabled={currentIndex === cards.length - 1}
       >
-        <ChevronRight className="w-6 h-6" />
+        <ChevronRight
+          style={{
+            visibility:
+              currentIndex === cards.length - 1 ? "hidden" : "visible",
+          }}
+          className="w-6 h-6"
+        />
       </button>
     </div>
   );
 }
 
-function Card() {
+function Card({ showPrices }: { showPrices: boolean }) {
+  const [open, setOpen] = useState<boolean>(false);
+  const [submissionActive, setSubmissionActive] = useState<boolean>(false);
+  useEffect(() => {
+    if (!showPrices) {
+      setSubmissionActive(true);
+    }
+  }, [showPrices]);
   return (
     <>
       <div className="w-full h-[200px] relative overflow-hidden">
@@ -175,7 +193,11 @@ function Card() {
           </div>
         </div>
         <div className="my-4 text-sm text-black font-semibold">
-          From <span className="text-bakhla-red">₹8,65,000</span> Per Person
+          {showPrices && (
+            <>
+              From <span className="text-bakhla-red">₹8,65,000</span> Per Person
+            </>
+          )}
         </div>
         <div className="text-sm text-neutral-600 font-semibold flex items-center">
           <Clock className="mr-2 w-4 h-4" />
@@ -185,9 +207,28 @@ function Card() {
           <Link href="#" className="text-bakhla-red">
             Read More
           </Link>
-          <Button className="bg-bakhla-red hover:bg-bakhla-red/90">
-            Book Now
-          </Button>
+          <Dialog
+            open={open}
+            onOpenChange={(isOpen) => {
+              if (!isOpen) {
+                setOpen(false);
+                // On closing, it was giving a switch to dialog with previous submission made alert for a fraction of time.
+                setTimeout(() => setSubmissionActive(false), 500);
+              }
+            }}
+          >
+            <Button
+              onClick={() => setOpen(true)}
+              className="bg-bakhla-red hover:bg-bakhla-red/90"
+            >
+              Book Now
+            </Button>
+            <InquiryDialog
+              submissionActive={submissionActive}
+              setSubmissionActive={setSubmissionActive}
+              setOpen={setOpen}
+            />
+          </Dialog>
         </div>
       </div>
     </>

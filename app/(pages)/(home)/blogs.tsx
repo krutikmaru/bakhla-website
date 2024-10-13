@@ -5,7 +5,7 @@ import React from "react";
 
 function Blogs() {
   return (
-    <div className="py-10 px-6 sm:px-10 md:px-14 lg:px-20 flex flex-col justify-center items-center">
+    <div className="py-10 px-6 sm:px-10 md:px-14 lg:px-20 flex flex-col justify-center items-center max-w-[1900px] mx-auto">
       <h2 className="scroll-m-20 text-center text-3xl font-semibold tracking-tight first:mt-0 ">
         Our Blogs
       </h2>

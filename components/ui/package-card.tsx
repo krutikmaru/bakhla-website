@@ -23,7 +23,7 @@ function PackageCardFace({
     settings["CARDFACE_DISPLAY_FIELDS"]["fields"] || [];
 
   const price = formatCurrency(data[settings["PRICE_FIELD_NAME"]]) || "NA";
-  const packageId = data["PACKAGE_ID"];
+  const id = data["id"];
 
   return (
     <div
@@ -69,7 +69,7 @@ function PackageCardFace({
         </div>
         <div className="py-3 mt-5 border-t-[1px] border-neutral-300 w-full flex justify-between items-center">
           <Link
-            href={`/packages/${name}/${packageId}`}
+            href={`/packages/${name}/${id}`}
             // href={{
             //   pathname: `/packages/${tourPackage.Pakage_Parent_Group.toLowerCase()}/${
             //     tourPackage.Package_ID

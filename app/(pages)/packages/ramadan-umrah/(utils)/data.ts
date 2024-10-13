@@ -1,0 +1,257 @@
+const ramadan_umrah_data = [
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-11-1.webp",
+    title: "Gold Package – (Shaban | Ramadan)",
+    hotelMakkah: "Snood Ajyad",
+    hotelMadinah: "Odst Al Madinah",
+    eid: "N/A",
+    price: "₹1,29,000",
+    duration: "15 Days",
+    cardId: "RT01",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-1-1.webp",
+    title: "Gold Package – (First 15 Days)",
+    hotelMakkah: "Snood Ajyad",
+    hotelMadinah: "Odst Al Madinah",
+    eid: "N/A",
+    price: "₹1,30,500",
+    duration: "15 Days",
+    cardId: "RT02",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-19-1.webp",
+    title: "Gold Package – (Last 15 Days Eid In Makkah)",
+    hotelMakkah: "Snood Ajyad",
+    hotelMadinah: "Odst Al Madinah",
+    eid: "Eid in Makkah",
+    price: "₹1,82,500",
+    duration: "15 Days",
+    cardId: "RT03",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-10-1.jpg",
+    title: "Gold Package – (Last 15 Days Eid In Madina)",
+    hotelMakkah: "Snood Ajyad",
+    hotelMadinah: "Odst Al Madinah",
+    eid: "Eid in Madina",
+    price: "₹1,28,000",
+    duration: "15 Days",
+    cardId: "RT04",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-4-1.webp",
+    title: "Gold Package – (First 20 Days)",
+    hotelMakkah: "Snood Ajyad",
+    hotelMadinah: "Odst Al Madinah",
+    eid: "N/A",
+    price: "₹1,55,000",
+    duration: "20 Days",
+    cardId: "RT05",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-6-1.webp",
+    title: "Gold Package – (Last 20 Days Eid In Makkah)",
+    hotelMakkah: "Snood Ajyad",
+    hotelMadinah: "Odst Al Madinah",
+    eid: "Eid in Makkah",
+    price: "₹2,04,500",
+    duration: "20 Days",
+    cardId: "RT06",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-2-1.webp",
+    title: "Gold Package – (Last 20 Days Eid In Madina)",
+    hotelMakkah: "Snood Ajyad",
+    hotelMadinah: "Odst Al Madinah",
+    eid: "Eid in Madina",
+    price: "₹1,58,500",
+    duration: "20 Days",
+    cardId: "RT07",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-5-1.webp",
+    title: "Gold Package – (Ramadan | Shawwal)",
+    hotelMakkah: "Snood Ajyad",
+    hotelMadinah: "Odst Al Madinah",
+    eid: "N/A",
+    price: "₹1,29,000",
+    duration: "20 Days",
+    cardId: "RT10",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-7-1.webp",
+    title: "Gold Package – (Full Month Eid In Makkah)",
+    hotelMakkah: "Snood Ajyad",
+    hotelMadinah: "Odst Al Madinah",
+    eid: "Eid in Makkah",
+    price: "₹2,62,500",
+    duration: "Full Month",
+    cardId: "RT08",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-10-1.jpg",
+    title: "Gold Package – (Full Month Eid In Madina)",
+    hotelMakkah: "Snood Ajyad",
+    hotelMadinah: "Odst Al Madinah",
+    eid: "Eid in Madina",
+    price: "₹2,16,000",
+    duration: "Full Month",
+    cardId: "RT09",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-17-1.webp",
+    title: "Gold Package – (Full Month Eid In Madina)",
+    hotelMakkah: "Snood Ajyad",
+    hotelMadinah: "Odst Al Madinah",
+    eid: "Eid in Madina",
+    price: "₹2,10,500",
+    duration: "Full Month",
+    cardId: "RT11",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-9-1.webp",
+    title: "Platinum Package – (Last 15 Days Eid In Madina)",
+    hotelMakkah: "Olyan Ajyad Ex-Massa",
+    hotelMadinah: "Ritz Al Madina",
+    eid: "Eid in Madina",
+    price: "₹1,88,500",
+    duration: "15 Days",
+    cardId: "RT12",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-15-1.webp",
+    title: "Platinum Package – (Last 20 Days Eid In Madina)",
+    hotelMakkah: "Olyan Ajyad Ex-Massa",
+    hotelMadinah: "Ritz Al Madina",
+    eid: "Eid in Madina",
+    price: "₹2,34,500",
+    duration: "20 Days",
+    cardId: "RT13",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-16-1.webp",
+    title: "Platinum Package – (Full Month Eid In Madina)",
+    hotelMakkah: "Olyan Ajyad Ex-Massa",
+    hotelMadinah: "Ritz Al Madina",
+    eid: "Eid in Madina",
+    price: "₹3,26,500",
+    duration: "Full Month",
+    cardId: "RT14",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-12-1.webp",
+    title: "Platinum Package – (Full Month Eid In Madina)",
+    hotelMakkah: "Olyan Ajyad Ex-Massa",
+    hotelMadinah: "Ritz Al Madina",
+    eid: "Eid in Madina",
+    price: "₹3,16,000",
+    duration: "Full Month",
+    cardId: "RT15",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-22-1.webp",
+    title: "Silver Package – (Full Month Eid In Madina)",
+    hotelMakkah: "Wahat Deafah",
+    hotelMadinah: "Karam Al Madina",
+    eid: "Eid in Madina",
+    price: "₹1,83,000",
+    duration: "Full Month",
+    cardId: "RT16",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-18-1.webp",
+    title: "Gold Package – (15 Days Eid In Madina)",
+    hotelMakkah: "Snood Ajyad",
+    hotelMadinah: "Manazeli Madina",
+    eid: "Eid in Madina",
+    price: "₹1,36,500",
+    duration: "15 Days",
+    cardId: "RT17",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-14-1.webp",
+    title: "Gold Package – (Last 20 Days Eid In Madina)",
+    hotelMakkah: "Snood Ajyad",
+    hotelMadinah: "Manazeli Madina",
+    eid: "Eid in Madina",
+    price: "₹1,66,500",
+    duration: "20 Days",
+    cardId: "RT18",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-20-1.webp",
+    title: "Gold Package – (Full Month Eid In Madina)",
+    hotelMakkah: "Snood Ajyad",
+    hotelMadinah: "Manazeli Madina",
+    eid: "Eid in Madina",
+    price: "₹2,24,500",
+    duration: "Full Month",
+    cardId: "RT19",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-241.webp",
+    title: "Gold Package – (Last 15 Days Eid In Madina)",
+    hotelMakkah: "Snood Ajyad",
+    hotelMadinah: "Manazeli Madina",
+    eid: "Eid in Madina",
+    price: "₹1,37,500",
+    duration: "15 Days",
+    cardId: "RT20",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-23-1.webp",
+    title: "Platinum Package – (Last 15 Days Eid In Madina)",
+    hotelMakkah: "Massa",
+    hotelMadinah: "Manazeli Madina",
+    eid: "Eid in Madina",
+    price: "₹1,67,000",
+    duration: "15 Days",
+    cardId: "RT21",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-13-1.webp",
+    title: "Platinum Package – (Last 20 Days Eid In Madina)",
+    hotelMakkah: "Massa",
+    hotelMadinah: "Manazeli Madina",
+    eid: "Eid in Madina",
+    price: "₹2,13,000",
+    duration: "20 Days",
+    cardId: "RT22",
+  },
+  {
+    image:
+      "https://bakhlatours.com/wp-content/uploads/2024/02/RAMADAN-PACKAGES-8-1-1.webp",
+    title: "Platinum Package – (Full Month Eid In Madina)",
+    hotelMakkah: "Massa",
+    hotelMadinah: "Manazeli Madina",
+    eid: "Eid in Madina",
+    price: "₹3,05,000",
+    duration: "Full Month",
+    cardId: "RT23",
+  },
+];
+
+export default ramadan_umrah_data;

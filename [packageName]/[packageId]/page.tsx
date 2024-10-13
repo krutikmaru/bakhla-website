@@ -39,16 +39,40 @@ async function Page({
     mappings[packageName as keyof typeof mappings]["single"];
   const static_data_api =
     mappings[packageName as keyof typeof mappings]["static"];
-  let data: any = await axios.post(
-    `${single_data_api}?package_id=${packageId}`
-  );
+  let data: any = await axios.post(`${single_data_api}`, {
+    id: packageId,
+  });
   let static_data: any = await axios.post(static_data_api);
   console.log(static_data.data);
-  data = data.data;
+  data = data.data[0];
   static_data = static_data.data[0];
   console.log(data);
   console.log(static_data);
   const price = formatCurrency(data[static_data["PRICE_FIELD_NAME"]]) || "NA";
+
+  async function handleSubmitForm(formData: FormData) {
+    "use server";
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const phone = formData.get("phone");
+    const body = {
+      name,
+      email_id: email,
+      mobile_number: phone,
+      tour: data.PACKAGE_ID,
+    };
+    try {
+      const response = await axios.post(
+        "https://krutik.devdusija.com/lead/new",
+        body
+      );
+
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <div className="mt-20 flex justify-start items-start flex-wrap overflow-visible">
       <div className="w-full h-[500px]  relative">
@@ -67,7 +91,7 @@ async function Page({
               {data.Name}
             </h4>
             <p className="leading-7 [&:not(:first-child)]:mt-2">
-              {static_data.Pakages_Description}
+              {static_data.PACKAGE_DESCRIPTION}
             </p>
             <p className="leading-7 [&:not(:first-child)]:mt-2">
               For More Details On Ramadan Umrah Package{" "}
@@ -278,50 +302,54 @@ async function Page({
           </div>
         </div>
         <div className="w-full h-80  relative top-0 md:w-[500px] md:sticky md:top-28">
-          <Card className="w-full">
-            <CardHeader>
-              <CardTitle>{price}</CardTitle>
-              <CardDescription>per person</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form>
+          <form action={handleSubmitForm}>
+            <Card className="w-full">
+              <CardHeader>
+                <CardTitle>{price}</CardTitle>
+                <CardDescription>per person</CardDescription>
+              </CardHeader>
+              <CardContent>
                 <div className="grid w-full items-center gap-4">
                   <div className="flex flex-col space-y-1.5">
                     <Label htmlFor="name">Name *</Label>
-                    <Input id="name" placeholder="Your Name" />
+                    <Input
+                      required
+                      name="name"
+                      id="name"
+                      placeholder="Your Name"
+                    />
                   </div>
                   <div className="flex flex-col space-y-1.5">
                     <Label htmlFor="phone">Phone *</Label>
-                    <Input id="phone" type="number" placeholder="Your Phone" />
+                    <Input
+                      required
+                      name="phone"
+                      id="phone"
+                      type="number"
+                      placeholder="Your Phone"
+                    />
                   </div>
                   <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" placeholder="Your Email" />
-                  </div>
-                  <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="tour">Tour</Label>
-                    <Select>
-                      <SelectTrigger id="tour">
-                        <SelectValue placeholder="Select Tour" />
-                      </SelectTrigger>
-                      <SelectContent position="popper">
-                        <SelectItem value="hajj">Hajj</SelectItem>
-                        <SelectItem value="umrah">Umrah</SelectItem>
-                        <SelectItem value="ziyarat">Ziyarat</SelectItem>
-                        <SelectItem value="ramadan">Ramadan</SelectItem>
-                        <SelectItem value="others">Others</SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <Label htmlFor="email">Email *</Label>
+                    <Input
+                      required
+                      id="email"
+                      name="email"
+                      placeholder="Your Email"
+                    />
                   </div>
                 </div>
-              </form>
-            </CardContent>
-            <CardFooter className="flex justify-between">
-              <Button className="bg-bakhla-red hover:bg-bakhla-red/90">
-                Send Inquiry
-              </Button>
-            </CardFooter>
-          </Card>
+              </CardContent>
+              <CardFooter className="flex justify-between">
+                <Button
+                  type="submit"
+                  className="bg-bakhla-red hover:bg-bakhla-red/90"
+                >
+                  Send Inquiry
+                </Button>
+              </CardFooter>
+            </Card>
+          </form>
         </div>
       </div>
     </div>

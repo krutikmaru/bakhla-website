@@ -7,15 +7,15 @@ import { Button } from "./button";
 export default function Footer() {
   return (
     <footer className="bg-[#121921] text-white py-12">
-      <div className="container mx-auto px-6 sm:px-10 md:px-20">
+      <div className="container mx-auto px-6 sm:px-10 md:px-44">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About Section */}
           <div>
             <Image
               src="/logo-full-white.png"
               alt="Bakhla Logo"
-              width={150}
-              height={50}
+              width={200}
+              height={100}
               className="mb-4"
             />
             <h4 className="scroll-m-20 text-lg font-semibold tracking-tight">
@@ -135,7 +135,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/about"
                   className="leading-7 [&:not(:first-child)]:my-2 text-neutral-400 hover:text-bakhla-red transition-all duration-300 ease-in-out"
                 >
                   About Us
@@ -199,7 +199,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/contact"
                   className="leading-7 [&:not(:first-child)]:my-2 text-neutral-400 hover:text-bakhla-red transition-all duration-300 ease-in-out"
                 >
                   Contact Us
@@ -230,7 +230,7 @@ export default function Footer() {
               Bakhla Tours & Travels Pvt. Ltd.
             </h4>
 
-            <p className="text-sm mb-4 flex leading-7 [&:not(:first-child)]:my-2 text-neutral-400">
+            <p className="text-sm mb-4 flex flex-col leading-7 [&:not(:first-child)]:my-2 text-neutral-400">
               would love your feedback.
               <br />
               Post a review to our profile.

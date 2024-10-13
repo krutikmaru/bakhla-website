@@ -22,6 +22,7 @@ const config = {
       backgroundImage: {
         packages: "url('/images/backgrounds/packages.png')",
         landing: "url('/images/banners/landing.webp')",
+        contact: "url('/images/backgrounds/contact-form.webp')",
       },
       colors: {
         bakhla: {

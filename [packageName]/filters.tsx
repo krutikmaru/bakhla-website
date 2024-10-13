@@ -9,12 +9,6 @@ import {
 
 const filters = {
   ramadan: [
-    // {
-    //   type: "select",
-    //   title: "No of days",
-    //   fieldname: "NO_OF_DAYS",
-    //   options: ["15", "20", "30"],
-    // },
     {
       type: "range",
       title: "No of days",
@@ -45,15 +39,20 @@ const filters = {
   ],
   hajj: [
     {
-      type: "select",
+      type: "range",
       title: "No of days",
       fieldname: "NO_OF_DAYS",
-      options: ["15", "20", "30"],
+      options: [
+        { from: 5, to: 15 },
+        { from: 15, to: 20 },
+        { from: 20, to: 30 },
+        { from: 30, to: "*" },
+      ],
     },
     {
       type: "range",
       title: "Price range",
-      fieldname: "FOUR_BED_SHARING",
+      fieldname: "QUIT_I_QUAD",
       options: [
         "Low to high",
         "High to low",
@@ -96,6 +95,7 @@ export function renderFilters(
   filtersArray: any,
   setFilters: any
 ) {
+  console.log("Filters", filters);
   return (
     <div className="flex w-full py-5 space-x-5 items-end">
       {filters.map((f) => {
