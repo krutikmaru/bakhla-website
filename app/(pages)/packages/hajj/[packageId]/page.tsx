@@ -18,16 +18,14 @@ import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import ramadan_umrah_data from "../(utils)/data";
-import { RamadanUmrahPackage } from "../(utils)/types";
+import { HajjPackage } from "../(utils)/types";
 import { mapHtmlToReact } from "@/lib/utils-tsx";
 import { cookies } from "next/headers";
 import ContactForm from "../(components)/contact-form";
+import hajj_data from "../(utils)/data";
 
 function Page({ params }: { params: { packageId: string } }) {
-  const tour = ramadan_umrah_data.find(
-    (p) => p.package_id === params.packageId
-  );
+  const tour = hajj_data.find((p) => p.package_id === params.packageId);
   const showPrices = cookies().has("show_prices");
   if (!tour) {
     return (
@@ -55,7 +53,7 @@ function Page({ params }: { params: { packageId: string } }) {
           <Dates tour={tour} />
           <Hotels tour={tour} />
           <Meals />
-          <Notes />
+          {tour.html_notes && <Notes tour={tour} />}
           <Accordions />
         </div>
         {!showPrices && <ContactForm showPrices={showPrices} />}
@@ -66,11 +64,11 @@ function Page({ params }: { params: { packageId: string } }) {
 
 export default Page;
 
-function Introduction({ tour }: { tour: RamadanUmrahPackage }) {
+function Introduction({ tour }: { tour: HajjPackage }) {
   return (
     <div>
       <h4 className="scroll-m-20  text-xl font-semibold tracking-tight text-bakhla-red">
-        Ramadan Umrah {tour.year} {tour.title} {tour.package_id}
+        Hajj {tour.year} {tour.title} {tour.package_id}
       </h4>
       {mapHtmlToReact(tour.html_introduction)}
     </div>
@@ -125,7 +123,7 @@ function Pricing({
   tour,
 }: {
   showPrices: boolean;
-  tour: RamadanUmrahPackage;
+  tour: HajjPackage;
 }) {
   return (
     <div className="mt-5 pb-3 border-b-[1px] border-neutral-200">
@@ -158,32 +156,24 @@ function Pricing({
   );
 }
 
-function Dates({ tour }: { tour: RamadanUmrahPackage }) {
+function Dates({ tour }: { tour: HajjPackage }) {
   return (
     <div className="mt-5 pb-3 border-b-[1px] border-neutral-200">
       <div className="grid grid-cols-1 md:grid-cols-2 mt-2 gap-5">
         <div className="flex flex-col">
-          <span className="text-bakhla-red font-semibold">Start Date</span>
-          <span>{tour.start_date}</span>
+          <span className="text-bakhla-red font-semibold">Departure</span>
+          <span>{tour.departure}</span>
         </div>
         <div className="flex flex-col">
-          <span className="text-bakhla-red font-semibold">End Date</span>
-          <span>{tour.end_date}</span>
-        </div>
-        <div className="flex flex-col">
-          <span className="text-bakhla-red font-semibold">Start Hijri</span>
-          <span>{tour.start_hijri}</span>
-        </div>
-        <div className="flex flex-col">
-          <span className="text-bakhla-red font-semibold">End Hijri</span>
-          <span>{tour.end_hijri}</span>
+          <span className="text-bakhla-red font-semibold">Arrival</span>
+          <span>{tour.arrival}</span>
         </div>
       </div>
     </div>
   );
 }
 
-function Hotels({ tour }: { tour: RamadanUmrahPackage }) {
+function Hotels({ tour }: { tour: HajjPackage }) {
   return (
     <div className="mt-5 pb-3 border-b-2 border-neutral-200">
       <h4 className="scroll-m-20 text-lg font-semibold tracking-tight text-neutral-800">
@@ -193,12 +183,14 @@ function Hotels({ tour }: { tour: RamadanUmrahPackage }) {
         <div className="flex flex-col">
           <span className="text-bakhla-red font-semibold">Makkah</span>
           <span>{tour.hotel_makkah}</span>
-          {/* <span className="text-sm text-neutral-600">Distance: 200 Mtrs</span> */}
+          {tour.html_makkah_hotel_details &&
+            mapHtmlToReact(tour.html_makkah_hotel_details)}
         </div>
         <div className="flex flex-col">
           <span className="text-bakhla-red font-semibold">Madinah</span>
           <span>{tour.hotel_madinah}</span>
-          {/* <span className="text-sm text-neutral-600">Distance: 250 Mtrs</span> */}
+          {tour.html_makkah_hotel_details &&
+            mapHtmlToReact(tour.html_makkah_hotel_details)}
         </div>
       </div>
     </div>
@@ -216,20 +208,13 @@ function Meals() {
   );
 }
 
-function Notes() {
+function Notes({ tour }: { tour: HajjPackage }) {
   return (
     <div className="mt-5 pb-3 border-b-2 border-neutral-200">
       <h4 className="scroll-m-20 text-lg font-semibold tracking-tight text-neutral-800">
         Note
       </h4>
-      <ul>
-        <li className="leading-7 text-bakhla-red list-disc ml-5">
-          PACKAGE DETAILS ARE TENTATIVE CAN BE CHANGE WITHOUT PRIOR INTIMATION.
-        </li>
-        <li className="leading-7 text-bakhla-red list-disc ml-5">
-          HAND WRITTEN PASSPORTS ARE NOT ALLOWED. .
-        </li>
-      </ul>
+      {tour.html_notes && mapHtmlToReact(tour.html_notes)}
     </div>
   );
 }
@@ -240,54 +225,111 @@ function Accordions() {
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
           <AccordionTrigger className="text-bakhla-red">
-            Package includes
+            Types of Hajj Camps
           </AccordionTrigger>
           <AccordionContent>
-            <ul className="list-disc">
-              <li>Hello</li>
-              <li>Hello</li>
-              <li>Hello</li>
-            </ul>
+            <GridList />
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
           <AccordionTrigger className="text-bakhla-red">
-            Package excludes
+            Points to remember
           </AccordionTrigger>
           <AccordionContent>
             <ul className="list-di  sc">
-              <li>Hello</li>
-              <li>Hello</li>
-              <li>Hello</li>
+              <li>GST & TCS will be applicable.</li>
+              <li>
+                Travel agency is not responsible for the loss of luggage, if
+                any.
+              </li>
+              <li>
+                Extensions of flight routes will be charged and must be
+                confirmed at the time of booking.
+              </li>
+              <li>
+                Original passports must be submitted to our travel agency for
+                visa endorsement before the deadline dates provided by us.
+              </li>
+              <li>
+                Hotels and flight schedules are subject to change without prior
+                notice.
+              </li>
             </ul>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3">
           <AccordionTrigger className="text-bakhla-red">
-            Child Policy
+            Packages Include
           </AccordionTrigger>
           <AccordionContent>
             <ul className="list-disc">
-              <li>Hello</li>
-              <li>Hello</li>
-              <li>Hello</li>
+              <li>Local Ziyarat in Makkah and Madina.</li>
+              <li>Hajj Visa Service, Ticket provided.</li>
+              <li>
+                Stay/Accommodation in Makkah & Madinah as the hotel mentioned or
+                similar standard.
+              </li>
+              <li>Round-trip transportation will be provided.</li>
+              <li>
+                3 Times Buffet Indian food daily (breakfast, lunch & dinner) is
+                served in a hotel restaurant cooked by our own Indian Chefs.
+              </li>
+              <li>Meals will be served in Mina & Arafat during Hajj.</li>
+              <li>All services will start from Jeddah or Madinah airport.</li>
+              <li>Zam Zam 5 Litres.</li>
+              <li>Complimentary unlimited Laundry Service.</li>
+              <li>
+                Complimentary Hajj Kit includes: Luggage Bag, Hand Carry Bag,
+                Passport Pouch, Musalla, Mat, Tasbeeh, Haj Guide
+              </li>
             </ul>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-4">
           <AccordionTrigger className="text-bakhla-red">
-            Booking Requirements
+            Packages Exclude
           </AccordionTrigger>
           <AccordionContent>
             <ul className="list-disc">
-              <li>6 Months Validity on PASSPORT With 2 Empty Pages</li>
-              <li>Aadhaar Card</li>
-              <li>Pan Card</li>
-              <li>2 Passport Size Photos</li>
+              <li>Qurbani</li>
+              <li>Tawaf -E-Ziyarat transportation</li>
+              <li>Room Service</li>
+              <li>Excess Baggage other than weight allowance</li>
+              <li>Any personal expense</li>
+              <li>GST & TCS</li>
+              <li>Porter Service</li>
+              <li>Individual Transfer</li>
             </ul>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-5">
+          <AccordionTrigger className="text-bakhla-red">
+            Child Policy
+          </AccordionTrigger>
+          <AccordionContent>
+            <ul className="list-disc">
+              <li>
+                ₹1,00,000 less than the adult fare for child 0-2 years (WITH
+                BED).
+              </li>
+              <li>Same as Adult fare for child 2-12 years (WITH BED).</li>
+            </ul>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-6">
+          <AccordionTrigger className="text-bakhla-red">
+            Booking Requirements
+          </AccordionTrigger>
+          <AccordionContent>
+            <ul className="list-disc">
+              <li>8 Photos with a white background (passport size).</li>
+              <li>6-month validity on a passport with 2 empty pages.</li>
+              <li>Pan Card | Aadhar Card | 2 Passport Size Photos.</li>
+            </ul>
+          </AccordionContent>
+        </AccordionItem>
+
+        <AccordionItem value="item-7">
           <AccordionTrigger className="text-bakhla-red">
             Cancellation Policy
           </AccordionTrigger>
@@ -300,7 +342,69 @@ function Accordions() {
             </ul>
           </AccordionContent>
         </AccordionItem>
+        <AccordionItem value="item-8">
+          <AccordionTrigger className="text-bakhla-red">
+            Terms & Conditions
+          </AccordionTrigger>
+          <AccordionContent>
+            <ul className="list-disc">
+              <li>
+                All bookings are subject to license approved by MOMA and the
+                quota allotted by MOMA.
+              </li>
+              <li>
+                If any fluctuation in taxes/currency by the Indian or Saudi
+                Government, passengers have to bear the difference.
+              </li>
+            </ul>
+          </AccordionContent>
+        </AccordionItem>
       </Accordion>
+    </div>
+  );
+}
+
+function GridList() {
+  const categories = [
+    {
+      name: "Category D-Moallims:",
+      features: [
+        "Located at 3 to 5 km from Jamarat in the new Mina area.",
+        "Fireproof tents with Air Coolers are provided by the Moallim in this category.",
+        "Mattresses and pillows are provided by the Moallims.",
+        "Simple Food Menu (1 gravy with rice/roti) is provided three times daily.",
+        "Bakhia Team tries to arrange additional food items for the Hajj Pilgrims.",
+        "Seat by Seat Transport will be provided by Bakhia Tours & Travels PVT. Ltd. privately.",
+      ],
+    },
+    {
+      name: "Category -A Moallims:",
+      features: [
+        "Located at 600 meters to 1 km from Jamarat near Masjid Khaif in Mina.",
+        "Air-Conditioned tents made with Gypsum board are provided by the Moallim in this category.",
+        "Luxury Sofa Beds are provided by the Moallims.",
+        "Luxury Buffet Food is provided three times daily.",
+        "Seat By Seat Transport will be provided by Bakhia Tours & Travels Pvt. Ltd. privately.",
+      ],
+    },
+  ];
+  return (
+    <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
+      {categories.map((category, index) => (
+        <div key={index} className="mb-6">
+          <h2 className="text-xl font-bold mb-4 text-gray-800">
+            {category.name}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {category.features.map((feature, featureIndex) => (
+              <div key={featureIndex} className="flex items-start">
+                <div className="flex-shrink-0 w-4 h-4 rounded-full bg-red-500 mt-1 mr-2"></div>
+                <p className="text-gray-700">{feature}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

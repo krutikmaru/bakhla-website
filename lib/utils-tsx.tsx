@@ -17,11 +17,13 @@ const CustomParagraph = ({ children, className }: CustomHTMLProps) => (
   <p className={`text-base  leading-relaxed my-4 ${className}`}>{children}</p>
 );
 
-const CustomLink = ({ href, children, className }: CustomHTMLProps) => (
-  <a href={href} className={`text-blue-500 hover:underline ${className}`}>
-    {children}
-  </a>
-);
+const CustomLink = ({ href, children, className }: CustomHTMLProps) => {
+  return (
+    <a href={href} className={`hover:underline ${className}`}>
+      {children}
+    </a>
+  );
+};
 
 export const mapHtmlToReact = (htmlContent: string) => {
   if (typeof htmlContent !== "string") {
@@ -40,7 +42,7 @@ export const mapHtmlToReact = (htmlContent: string) => {
 
       if (domNode.name === "h1") {
         return (
-          <CustomHeading className={domNode.attribs.classname || ""}>
+          <CustomHeading className={domNode.attribs.className || ""}>
             {domToReact(domNode.children, options)}
           </CustomHeading>
         );
@@ -48,7 +50,7 @@ export const mapHtmlToReact = (htmlContent: string) => {
 
       if (domNode.name === "p") {
         return (
-          <CustomParagraph className={domNode.attribs.classname || ""}>
+          <CustomParagraph className={domNode.attribs.className || ""}>
             {domToReact(domNode.children, options)}
           </CustomParagraph>
         );
@@ -58,7 +60,7 @@ export const mapHtmlToReact = (htmlContent: string) => {
         return (
           <CustomLink
             href={domNode.attribs.href}
-            className={domNode.attribs.classname || ""}
+            className={domNode.attribs.className || ""}
           >
             {domToReact(domNode.children, options)}
           </CustomLink>
@@ -68,7 +70,7 @@ export const mapHtmlToReact = (htmlContent: string) => {
       if (domNode.name === "ul") {
         return (
           <ul
-            className={`list-disc pl-5 my-4 ${domNode.attribs.classname || ""}`}
+            className={`list-disc pl-5 my-4 ${domNode.attribs.className || ""}`}
           >
             {domToReact(domNode.children, options)}
           </ul>
@@ -77,7 +79,7 @@ export const mapHtmlToReact = (htmlContent: string) => {
 
       if (domNode.name === "li") {
         return (
-          <li className={`my-2 list-disc ${domNode.attribs.classname || ""}`}>
+          <li className={`my-2 list-disc ${domNode.attribs.className || ""}`}>
             {domToReact(domNode.children, options)}
           </li>
         );
@@ -85,7 +87,7 @@ export const mapHtmlToReact = (htmlContent: string) => {
 
       if (domNode.name === "b") {
         return (
-          <span className={`font-bold ${domNode.attribs.classname || ""}  `}>
+          <span className={`font-bold ${domNode.attribs.className || ""}  `}>
             {domToReact(domNode.children, options)}
           </span>
         );

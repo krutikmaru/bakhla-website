@@ -33,12 +33,15 @@ export default function FixedWidgets() {
           WhatsApp us
         </span>
       </Link>
-      <button className="bg-bakhla-red rounded-tr-lg rounded-tl-lg fixed z-20 top-[350px] -right-[52px] -rotate-90 text-white p-2 flex items-center space-x-2 shadow-lg px-4">
+      <Link
+        href="/contact"
+        className="bg-bakhla-red rounded-tr-lg rounded-tl-lg fixed z-20 top-[350px] -right-[52px] -rotate-90 text-white p-2 flex items-center space-x-2 shadow-lg px-4"
+      >
         {/* <Phone className="w-5 h-5" /> */}
         <span className="origin-left  inline-block whitespace-nowrap ">
           Get a call back
         </span>
-      </button>
+      </Link>
     </>
   );
 }

@@ -8,22 +8,22 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Dialog } from "./dialog";
 import InquiryDialog from "./inquiry-dialog";
+import ramadan_umrah_data from "@/app/(pages)/packages/ramadan-umrah/(utils)/data";
+import RamadanUmrahCard from "@/app/(pages)/packages/ramadan-umrah/(components)/card";
 
-interface Card {
-  id: number;
-  content: string;
-}
+const tourTypeDataMapping = {
+  "ramadan-umrah": ramadan_umrah_data.filter((pkg) => pkg.show_on_homepage),
+};
 
-const cards: Card[] = [
-  { id: 1, content: "1" },
-  { id: 2, content: "2" },
-  { id: 3, content: "3" },
-  { id: 4, content: "4" },
-  { id: 5, content: "5" },
-  { id: 6, content: "6" },
-];
-
-export default function CardCarousel({ showPrices }: { showPrices: boolean }) {
+export default function CardCarousel({
+  showPrices,
+  tour,
+}: {
+  showPrices: boolean;
+  tour: "ramadan-umrah" | "Umrah";
+}) {
+  const cards = tourTypeDataMapping[tour as keyof typeof tourTypeDataMapping];
+  console.log("cards", cards);
   const [currentIndex, setCurrentIndex] = useState(
     Math.floor(cards.length / 2)
   );
@@ -102,7 +102,7 @@ export default function CardCarousel({ showPrices }: { showPrices: boolean }) {
         <AnimatePresence initial={false} custom={direction}>
           {cards.map((card, index) => (
             <motion.div
-              key={card.id}
+              key={card.package_id}
               custom={direction}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{
@@ -110,7 +110,7 @@ export default function CardCarousel({ showPrices }: { showPrices: boolean }) {
                 x: dragOffset,
                 transition: { duration: 0.5 },
               }}
-              className="absolute group flex flex-col items-start justify-start w-[350px] sm:w-[380px] h-full shadow-lg bg-white border-[1px] border-neutral-100 overflow-hidden rounded-[8px] cursor-grab"
+              className="absolute group flex flex-col items-start justify-start w-[320px] sm:w-[380px] h-full shadow-lg bg-white border-[1px] border-neutral-100 overflow-hidden rounded-[8px] cursor-grab"
               style={{ originX: 0.5, originY: 0.5 }}
               drag="x"
               dragConstraints={{ left: -dragLimit, right: dragLimit }}
@@ -118,7 +118,20 @@ export default function CardCarousel({ showPrices }: { showPrices: boolean }) {
               onDrag={handleDrag}
               onDragEnd={handleDragEnd}
             >
-              <Card showPrices={showPrices} />
+              {tour === "ramadan-umrah" && (
+                <RamadanUmrahCard
+                  key={index}
+                  image={card.image}
+                  title={card.title}
+                  hotelMakkah={card.hotel_makkah}
+                  hotelMadinah={card.hotel_madinah}
+                  eid={card.eid}
+                  price={card.price}
+                  duration={card.duration}
+                  cardId={card.package_id}
+                  showPrices={showPrices}
+                />
+              )}
             </motion.div>
           ))}
         </AnimatePresence>
@@ -149,88 +162,5 @@ export default function CardCarousel({ showPrices }: { showPrices: boolean }) {
         />
       </button>
     </div>
-  );
-}
-
-function Card({ showPrices }: { showPrices: boolean }) {
-  const [open, setOpen] = useState<boolean>(false);
-  const [submissionActive, setSubmissionActive] = useState<boolean>(false);
-  useEffect(() => {
-    if (!showPrices) {
-      setSubmissionActive(true);
-    }
-  }, [showPrices]);
-  return (
-    <>
-      <div className="w-full h-[200px] relative overflow-hidden">
-        <Image
-          src="/images/banners/landing.webp"
-          alt="Image"
-          fill
-          className="absolute object-cover scale-110 group-hover:scale-100 transition-transform ease-in-out duration-200"
-        />
-      </div>
-      <div className="pt-5 px-7 flex flex-col justify-start items-start">
-        <h4 className="scroll-m-20 mb-4 text-xl font-semibold tracking-tight text-bakhla-red">
-          Hajj 2024 GOLD PACKAGE NON-SHIFTING SHORT TOUR (TOUR NO HT-01)
-        </h4>
-        <div className="flex flex-col w-full justify-start items-start text-black text-sm space-y-1">
-          <div className="w-full flex justify-between items-center ">
-            <span className="font-semibold">Mouallim No.</span>
-            <span className="text-neutral-600">Category-D</span>
-          </div>
-          <div className="w-full flex justify-between items-center">
-            <span className="font-semibold">Makkah Hotel</span>
-            <span className="text-neutral-600">Snood Ajyad</span>
-          </div>
-          <div className="w-full flex justify-between items-center">
-            <span className="font-semibold">Madinah Hotel</span>
-            <span className="text-neutral-600">Ritz Al Madinah</span>
-          </div>
-          <div className="w-full flex justify-between items-center">
-            <span className="font-semibold">Flight Departure</span>
-            <span className="text-neutral-600">BOM | Saudi Airlines</span>
-          </div>
-        </div>
-        <div className="my-4 text-sm text-black font-semibold">
-          {showPrices && (
-            <>
-              From <span className="text-bakhla-red">₹8,65,000</span> Per Person
-            </>
-          )}
-        </div>
-        <div className="text-sm text-neutral-600 font-semibold flex items-center">
-          <Clock className="mr-2 w-4 h-4" />
-          13 Days
-        </div>
-        <div className="py-3 mt-5 border-t-[1px] border-neutral-300 w-full flex justify-between items-center">
-          <Link href="#" className="text-bakhla-red">
-            Read More
-          </Link>
-          <Dialog
-            open={open}
-            onOpenChange={(isOpen) => {
-              if (!isOpen) {
-                setOpen(false);
-                // On closing, it was giving a switch to dialog with previous submission made alert for a fraction of time.
-                setTimeout(() => setSubmissionActive(false), 500);
-              }
-            }}
-          >
-            <Button
-              onClick={() => setOpen(true)}
-              className="bg-bakhla-red hover:bg-bakhla-red/90"
-            >
-              Book Now
-            </Button>
-            <InquiryDialog
-              submissionActive={submissionActive}
-              setSubmissionActive={setSubmissionActive}
-              setOpen={setOpen}
-            />
-          </Dialog>
-        </div>
-      </div>
-    </>
   );
 }
