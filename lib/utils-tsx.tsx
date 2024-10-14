@@ -1,24 +1,29 @@
 import React from "react";
 import parse, { domToReact } from "html-react-parser";
 
+type CustomHTMLProps = {
+  children: React.ReactNode;
+  className: string;
+  href?: string;
+};
 // Custom heading component that accepts attributes like className
-const CustomHeading = ({ children, className }) => (
+const CustomHeading = ({ children, className }: CustomHTMLProps) => (
   <h1 className={`text-4xl font-bold text-custom-color mt-4 ${className}`}>
     {children}
   </h1>
 );
 
-const CustomParagraph = ({ children, className }) => (
+const CustomParagraph = ({ children, className }: CustomHTMLProps) => (
   <p className={`text-base  leading-relaxed my-4 ${className}`}>{children}</p>
 );
 
-const CustomLink = ({ href, children, className }) => (
+const CustomLink = ({ href, children, className }: CustomHTMLProps) => (
   <a href={href} className={`text-blue-500 hover:underline ${className}`}>
     {children}
   </a>
 );
 
-export const mapHtmlToReact = (htmlContent) => {
+export const mapHtmlToReact = (htmlContent: string) => {
   if (typeof htmlContent !== "string") {
     console.error(
       "Expected HTML content to be a string, but got:",
@@ -28,7 +33,7 @@ export const mapHtmlToReact = (htmlContent) => {
   }
 
   const options = {
-    replace: (domNode) => {
+    replace: (domNode: any) => {
       if (domNode.type === "text") {
         return domNode.data;
       }
