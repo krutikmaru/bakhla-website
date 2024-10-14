@@ -228,23 +228,27 @@ function Main({ showPrices }: { showPrices: boolean }) {
               />
             </div>
 
-            <div>
-              <h2 className="font-medium mb-2 text-neutral-500">Price Range</h2>
-              <div className="w-full">
-                <Label htmlFor="max_price" className="text-neutral-500 ">
-                  Max Price: ₹{maxPrice}
-                </Label>
-                <Slider
-                  id="max_price"
-                  className="mt-2"
-                  min={0}
-                  max={500000}
-                  step={10000}
-                  value={[maxPrice]}
-                  onValueChange={handleMaxPriceChange}
-                />
+            {showPrices && (
+              <div>
+                <h2 className="font-medium mb-2 text-neutral-500">
+                  Price Range
+                </h2>
+                <div className="w-full">
+                  <Label htmlFor="max_price" className="text-neutral-500 ">
+                    Max Price: ₹{maxPrice}
+                  </Label>
+                  <Slider
+                    id="max_price"
+                    className="mt-2"
+                    min={0}
+                    max={500000}
+                    step={10000}
+                    value={[maxPrice]}
+                    onValueChange={handleMaxPriceChange}
+                  />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         )}
 
